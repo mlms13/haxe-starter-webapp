@@ -1,0 +1,6 @@
+-cp client
+-lib jQueryExtern
+-lib mithril
+
+-main client.app.Main
+-js dist/public/js/client.js
