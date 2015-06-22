@@ -2,5 +2,5 @@
 -lib jQueryExtern
 -lib mithril
 
--main app.Main
+-main app.App
 -js dist/public/js/client.js

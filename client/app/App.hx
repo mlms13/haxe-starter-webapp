@@ -2,7 +2,7 @@ package app;
 
 import mithril.M;
 
-class Main {
+class App {
   var routes : Dynamic<MithrilModule<Dynamic>>;
 
   public function new() {
@@ -12,8 +12,12 @@ class Main {
       "/overview": overviewModule
     };
   }
+  
+  public function start() {
+    M.route(js.Browser.document, '/', routes);
+  }
 
   public static function main() {
-    new Main();
+    new App().start();
   }
 }
