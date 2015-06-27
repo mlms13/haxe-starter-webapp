@@ -2,9 +2,9 @@ var gulp = require('gulp'),
     gutil = require('gulp-util'),
 
     // gulp plugins
+    concat = require('gulp-concat'),
     stylus = require('gulp-stylus'),
     uglify = require('gulp-uglify'),
-    rename = require('gulp-rename'),
 
     // configuration
     paths = {
@@ -13,7 +13,7 @@ var gulp = require('gulp'),
         dest: './public'
       },
       js: {
-        all: ['./node_modules/mithril/mithril.js'.
+        all: ['./node_modules/mithril/mithril.js',
               './public/js/client.js'],
         dest: './public/js'
       },
@@ -31,8 +31,8 @@ gulp.task('copy:html', function () {
 
 gulp.task('js', function () {
   return gulp.src(paths.js.all)
+    .pipe(concat('bundle.js'))
     .pipe(uglify())
-    .pipe(rename('bundle.js'))
     .pipe(gulp.dest(paths.js.dest));
 });
 

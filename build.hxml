@@ -3,4 +3,4 @@
 -lib mithril
 
 -main app.App
--js dist/public/js/client.js
+-js public/js/client.js

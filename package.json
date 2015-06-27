@@ -18,6 +18,9 @@
   "homepage": "https://github.com/mlms13/haxe-starter-webapp",
   "devDependencies": {
     "gulp": "^3.9.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-stylus": "^2.0.5",
+    "gulp-uglify": "^1.2.0",
     "gulp-util": "^3.0.6"
   },
   "dependencies": {

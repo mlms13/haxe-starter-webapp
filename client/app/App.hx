@@ -1,20 +1,22 @@
 package app;
 
+import js.Browser;
 import mithril.M;
+import app.components.*;
 
 class App {
-  var routes : Dynamic<MithrilModule<Dynamic>>;
+  var routes : Dynamic;
 
   public function new() {
-    var overviewModule = new OverviewModule();
+    var todo = new TodoComponent();
 
     routes = {
-      "/overview": overviewModule
+      "/": todo
     };
   }
-  
+
   public function start() {
-    M.route(js.Browser.document, '/', routes);
+    M.route(Browser.document.body, '/', routes);
   }
 
   public static function main() {
