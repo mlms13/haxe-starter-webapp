@@ -1,8 +1,9 @@
 var gulp = require('gulp'),
     gutil = require('gulp-util'),
 
-    // gulp plugins
+    // gulp plugins and utilities
     concat = require('gulp-concat'),
+    shell = require('shelljs'),
     stylus = require('gulp-stylus'),
     uglify = require('gulp-uglify'),
 
@@ -29,7 +30,14 @@ gulp.task('copy:html', function () {
     .pipe(gulp.dest(paths.html.dest));
 });
 
-gulp.task('js', function () {
+gulp.task('haxe', function () {
+  if (shell.exec('haxe build.hxml').code !== 0) {
+    shell.echo('haxe build failed');
+    shell.exit(1);
+  }
+});
+
+gulp.task('js', ['haxe'], function () {
   return gulp.src(paths.js.all)
     .pipe(concat('bundle.js'))
     .pipe(uglify())
