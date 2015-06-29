@@ -4,3 +4,12 @@
 
 -main app.App
 -js public/js/client.js
+
+--next
+
+-cp staticserver
+-lib abe
+-lib hxexpress
+-lib hxnodejs
+-main Main
+-js bin/staticserver.js
