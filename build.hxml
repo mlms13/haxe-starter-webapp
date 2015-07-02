@@ -1,7 +1,6 @@
 -cp client
 -lib jQueryExtern
 -lib mithril
--lib thx.promise
 -main app.App
 -js public/js/client.js
 
@@ -9,8 +8,7 @@
 
 -cp staticserver
 -lib abe
--lib hxexpress
+-lib express
 -lib hxnodejs
--lib thx.promise
 -main Main
 -js bin/staticserver.js
