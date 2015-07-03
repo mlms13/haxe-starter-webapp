@@ -3,6 +3,7 @@ var gulp = require('gulp'),
 
     // gulp plugins and utilities
     concat = require('gulp-concat'),
+    nodemon = require('nodemon'),
     shell = require('shelljs'),
     stylus = require('gulp-stylus'),
     uglify = require('gulp-uglify'),
@@ -48,6 +49,15 @@ gulp.task('stylus', function () {
   return gulp.src(paths.stylus.main)
     .pipe(stylus())
     .pipe(gulp.dest(paths.stylus.dest));
-})
+});
 
-gulp.task('default', ['copy:html', 'js', 'stylus']);
+gulp.task('build', ['copy:html', 'js', 'stylus']);
+
+gulp.task('static', ['build'], function () {
+  nodemon({
+    'script': 'bin/staticserver.js',
+    'ignore': ['.git', 'public/**']
+  });
+});
+
+gulp.task('default', ['static']);
