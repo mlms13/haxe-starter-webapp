@@ -8,7 +8,7 @@ class App {
   var routes : Dynamic;
 
   public function new() {
-    var todo = new TodoComponent();
+    var todo = new TodoView();
 
     routes = {
       "/": todo

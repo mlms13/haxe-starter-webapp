@@ -2,13 +2,9 @@ package app.components;
 
 import mithril.M;
 
-class TodoComponent implements Component {
+class TodoView implements View {
 
   public function new() {
-
-  }
-
-  public function controller() {
 
   }
 

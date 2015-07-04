@@ -3,8 +3,8 @@ var gulp = require('gulp'),
 
     // gulp plugins and utilities
     concat = require('gulp-concat'),
+    exec = require('child_process').exec,
     nodemon = require('nodemon'),
-    shell = require('shelljs'),
     stylus = require('gulp-stylus'),
     uglify = require('gulp-uglify'),
 
@@ -23,6 +23,9 @@ var gulp = require('gulp'),
         main: './client/styl/index.styl',
         all: ['./client/styl/**/*.styl'],
         dest: './public/css'
+      },
+      haxe: {
+        all: ['./client/app/**/*.hx', './staticserver/**/*.hx']
       }
     };
 
@@ -31,11 +34,10 @@ gulp.task('copy:html', function () {
     .pipe(gulp.dest(paths.html.dest));
 });
 
-gulp.task('haxe', function () {
-  if (shell.exec('haxe build.hxml').code !== 0) {
-    shell.echo('haxe build failed');
-    shell.exit(1);
-  }
+gulp.task('haxe', function (cb) {
+  exec('haxe build.hxml', function (err) {
+    cb(err);
+  });
 });
 
 gulp.task('js', ['haxe'], function () {
@@ -53,6 +55,10 @@ gulp.task('stylus', function () {
 
 gulp.task('build', ['copy:html', 'js', 'stylus']);
 
+gulp.task('watch', function () {
+  gulp.watch(paths.haxe.all, ['js']);
+});
+
 gulp.task('static', ['build'], function () {
   nodemon({
     'script': 'bin/staticserver.js',
@@ -60,4 +66,4 @@ gulp.task('static', ['build'], function () {
   });
 });
 
-gulp.task('default', ['static']);
+gulp.task('default', ['static', 'watch']);
