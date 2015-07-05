@@ -3,12 +3,14 @@ package app;
 import js.Browser;
 import mithril.M;
 import app.components.*;
+import app.models.*;
 
 class App {
   var routes : Dynamic;
 
   public function new() {
-    var todo = new TodoView();
+    var data = new TodoModel('Make this test app');
+    var todo = new TodoView(data);
 
     routes = {
       "/": todo
