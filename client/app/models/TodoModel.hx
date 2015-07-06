@@ -6,7 +6,7 @@ class TodoModel {
   public var title : String;
   public var isComplete : Bool;
 
-  public function new (title) {
+  public function new(title) {
     this.title = title;
   }
 }

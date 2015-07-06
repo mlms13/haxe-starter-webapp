@@ -9,6 +9,7 @@ class App {
   var routes : Dynamic;
 
   public function new() {
+    var list = TodoListModel.fetch();
     var data = new TodoModel('Make this test app');
     var todo = new TodoView(data);
 
