@@ -1,6 +1,8 @@
 -cp client
 -lib jQueryExtern
 -lib mithril
+-lib thx.promise
+-lib thx.core
 -main app.App
 -js public/js/client.js
 
