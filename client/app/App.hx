@@ -9,7 +9,7 @@ class App {
   var routes : Dynamic;
 
   public function new() {
-    var listView = new TodoListController();
+    var listView = new TodoListComponent();
 
     routes = {
       "/": listView

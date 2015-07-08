@@ -4,7 +4,7 @@ import mithril.M;
 import app.models.TodoListModel;
 using thx.Arrays;
 
-class TodoListController implements Component {
+class TodoListComponent implements Component {
   var list : TodoListModel;
 
   public function new() {
