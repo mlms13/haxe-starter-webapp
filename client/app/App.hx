@@ -17,7 +17,7 @@ class App {
   }
 
   public function start() {
-    M.route(Browser.document.body, '/', routes);
+    M.route(Browser.document.querySelector('#app'), '/', routes);
   }
 
   public static function main() {
