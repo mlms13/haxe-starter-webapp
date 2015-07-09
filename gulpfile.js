@@ -57,6 +57,8 @@ gulp.task('build', ['copy:html', 'js', 'stylus']);
 
 gulp.task('watch', function () {
   gulp.watch(paths.haxe.all, ['js']);
+  gulp.watch(paths.html.all, ['copy:html']);
+  gulp.watch(paths.stylus.all, ['stylus']);
 });
 
 gulp.task('static', ['build'], function () {

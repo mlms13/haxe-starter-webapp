@@ -8,5 +8,6 @@ class TodoModel {
 
   public function new(title) {
     this.title = title;
+    this.isComplete = false;
   }
 }

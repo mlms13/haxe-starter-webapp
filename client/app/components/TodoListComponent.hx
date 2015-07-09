@@ -24,6 +24,8 @@ class TodoListComponent implements Component {
   }
 
   public function view() : ViewOutput {
-    return list.todos.pluck(m('ul.todo-list', _.title));
+    return m('ul.todo-list', list.todos.pluck(
+      m('li.todo-item', _.title)
+    ));
   }
 }
