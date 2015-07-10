@@ -4,6 +4,7 @@ var gulp = require('gulp'),
     // gulp plugins and utilities
     concat = require('gulp-concat'),
     exec = require('child_process').exec,
+    lr = require('gulp-livereload'),
     nodemon = require('nodemon'),
     stylus = require('gulp-stylus'),
     uglify = require('gulp-uglify'),
@@ -15,8 +16,7 @@ var gulp = require('gulp'),
         dest: './public'
       },
       js: {
-        all: ['./node_modules/mithril/mithril.js',
-              './public/js/client.js'],
+        all: ['./node_modules/mithril/mithril.js', './public/js/client.js'],
         dest: './public/js'
       },
       stylus: {
@@ -31,7 +31,8 @@ var gulp = require('gulp'),
 
 gulp.task('copy:html', function () {
   return gulp.src(paths.html.all)
-    .pipe(gulp.dest(paths.html.dest));
+    .pipe(gulp.dest(paths.html.dest))
+    .pipe(lr());
 });
 
 gulp.task('haxe', function (cb) {
@@ -44,18 +45,22 @@ gulp.task('js', ['haxe'], function () {
   return gulp.src(paths.js.all)
     .pipe(concat('bundle.js'))
     .pipe(uglify())
-    .pipe(gulp.dest(paths.js.dest));
+    .pipe(gulp.dest(paths.js.dest))
+    .pipe(lr());
 });
 
 gulp.task('stylus', function () {
   return gulp.src(paths.stylus.main)
     .pipe(stylus())
-    .pipe(gulp.dest(paths.stylus.dest));
+    .pipe(gulp.dest(paths.stylus.dest))
+    .pipe(lr());
 });
 
 gulp.task('build', ['copy:html', 'js', 'stylus']);
 
-gulp.task('watch', function () {
+gulp.task('watch', ['build'], function () {
+  lr.listen();
+
   gulp.watch(paths.haxe.all, ['js']);
   gulp.watch(paths.html.all, ['copy:html']);
   gulp.watch(paths.stylus.all, ['stylus']);
