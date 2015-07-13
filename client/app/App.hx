@@ -17,6 +17,7 @@ class App {
   }
 
   public function start() {
+    M.routeMode = 'pathname';
     M.route(Browser.document.querySelector('#app'), '/', routes);
   }
 
