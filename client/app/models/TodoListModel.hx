@@ -3,6 +3,7 @@ package app.models;
 import mithril.M;
 import thx.promise.Promise;
 using thx.Arrays;
+using thx.Functions;
 
 class TodoListModel {
   public var todos : Array<TodoModel>;
@@ -22,7 +23,7 @@ class TodoListModel {
 
   public static function fetch() : Promise<TodoListModel> {
     var list = new TodoListModel();
-    list.todos = fakeData.pluck(new TodoModel(_));
+    list.todos = fakeData.map.fn(new TodoModel(_));
     return Promise.value(list);
   }
 }

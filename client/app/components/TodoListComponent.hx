@@ -3,6 +3,7 @@ package app.components;
 import mithril.M;
 import app.models.TodoListModel;
 using thx.Arrays;
+using thx.Functions;
 
 class TodoListComponent implements Component {
   var list : TodoListModel;
@@ -24,7 +25,7 @@ class TodoListComponent implements Component {
   }
 
   public function view() : ViewOutput {
-    return m('ul.todo-list', list.todos.pluck(
+    return m('ul.todo-list', list.todos.map.fn(
       m('li.todo-item', _.title)
     ));
   }
