@@ -10,6 +10,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
 
     // configuration
+    isProduction = gutil.env.prod,
     paths = {
       html: {
         all: ['./client/index.html'],
@@ -44,7 +45,7 @@ gulp.task('haxe', function (cb) {
 gulp.task('js', ['haxe'], function () {
   return gulp.src(paths.js.all)
     .pipe(concat('bundle.js'))
-    .pipe(uglify())
+    .pipe(isProduction ? uglify() : gutil.noop())
     .pipe(gulp.dest(paths.js.dest))
     .pipe(lr());
 });
