@@ -26,4 +26,8 @@ class TodoListModel {
     list.todos = fakeData.map.fn(new TodoModel(_));
     return Promise.value(list);
   }
+
+  public function addTask(name : String) {
+    todos.push(new TodoModel(name));
+  }
 }
