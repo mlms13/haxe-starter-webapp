@@ -5,7 +5,7 @@ import thx.promise.Promise;
 using thx.Arrays;
 using thx.Functions;
 
-class TodoListModel {
+class TodoListModel extends ModelBase {
   public var todos : Array<TodoModel>;
 
   public static var fakeData = [
