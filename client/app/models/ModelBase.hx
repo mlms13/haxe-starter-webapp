@@ -1,5 +1,5 @@
 package app.models;
 
-Class ModelBase {
+class ModelBase {
   public function new(){}
 }
