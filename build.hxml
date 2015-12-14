@@ -1,6 +1,5 @@
 -cp client
--lib jQueryExtern
--lib mithril
+-lib lies
 -lib thx.promise
 -lib thx.core
 -main app.App
